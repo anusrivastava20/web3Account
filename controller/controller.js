@@ -1,4 +1,4 @@
-const accountController = require('./createAccount.js');
+const accountController = require('../services/createAccount.js');
 
 exports.new_account = async function ( req, res ) {
     let ethData;

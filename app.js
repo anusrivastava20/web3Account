@@ -1,11 +1,6 @@
 const express = require('express');
-//const router = express.Router();
-//const accountController = require('./createAccount.js');
 
-// initialize our express ap
 const app = express();
-// directs app to use bodyParser, moved immediately below app declaration so
-// that bodyParser works universally.
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(express.raw());
@@ -18,12 +13,14 @@ if (process.env.SERVER_PORT != undefined) {
 }
 
 app.listen(port, function () {
-	console.log('Example app listening on port 3030!');
+	console.log('Example app listening on port 3000!');
   });
 
 // Imports routes for the products
-const account = require('./routs.js');
+const account = require('./routes/accountCreationRoutes');
+const wallet = require('./routes/walletRoutes');
 
 app.use('/account', account);
+app.use('/wallet', wallet);
 
 
