@@ -22,9 +22,21 @@ exports.remove_account_wallet = async function ( req, res ) {
     res.send(removeAccount);    
   }
 
-exports.remove_all_account_wallet = async function ( req, res ) {
-    let removeAllAccount;
+exports.remove_all_account = async function (req, res) {
+  let remove_all_account = await walletController.emptyWallet();
+  return remove_all_account;
+}
+
+exports.encrypt_all_account_wallet = async function ( req, res ) {
+    let encryptAllAccount;
     // await new ETH walletAddress
-    removeAllAccount = await walletController.emptyWallet();
-    res.send(removeAllAccount);    
+    encryptAllAccount = await walletController.encryptWalletAccounts(req.body.password);
+    res.send(encryptAllAccount);    
+  }
+
+exports.decrypt_all_account_wallet = async function ( req, res ) {
+    let decryptAllAccount;
+    // await new ETH walletAddress
+    decryptAllAccount = await walletController.decryptWalletAccounts(req.body);
+    res.send(decryptAllAccount);    
   }

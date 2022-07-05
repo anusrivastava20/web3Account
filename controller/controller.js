@@ -1,7 +1,7 @@
 const accountController = require('../services/createAccount.js');
 
 exports.new_account = async function ( req, res ) {
-    let ethData;
+    let ethData = {};
     // await new ETH walletAddress
     ethData = await accountController.createAccountInfo();
     console.log(ethData);
@@ -12,7 +12,7 @@ exports.encrypt_account_privatekey = async function ( req, res ) {
     let encryptedData;
     // await new ETH walletAddress
     console.log(req);
-    encryptedData = await accountController.encryptedPrivateKeyResult(req.body);
+    encryptedData = await accountController.encryptedPrivateKeyResult(req.body.password);
     res.send(encryptedData);    
 }
 
