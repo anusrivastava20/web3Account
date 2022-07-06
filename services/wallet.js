@@ -6,7 +6,7 @@ var createWallet = async(number) => {
     var newWallet = await web3.eth.accounts.wallet.create(parseInt(number));
     console.log('%s',newWallet);
     var walletStack = [];
-    for (i=0; i<newWallet.length; i++){
+    for (i=0; i < newWallet.length; ++i){
         walletStack.push(newWallet[i]);
     }
     console.log(walletStack);
@@ -19,8 +19,8 @@ var addAccountToWallet = async(privateKey) => {
     return addedAccDetails;
 }
 
-var removeAccountFromWallet = async(address) => {
-    var removeAccDetails = await web3.eth.accounts.wallet.remove(address);
+var removeAccountFromWallet = async(account) => {
+    var removeAccDetails = await web3.eth.accounts.wallet.remove(account);
     return removeAccDetails;
 }
 

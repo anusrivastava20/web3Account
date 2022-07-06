@@ -18,7 +18,7 @@ exports.add_account_to_wallet = async function ( req, res ) {
 exports.remove_account_wallet = async function ( req, res ) {
     let removeAccount;
     // await new ETH walletAddress
-    removeAccount = await walletController.removeAccountFromWallet(req.body.address);
+    removeAccount = await walletController.removeAccountFromWallet(req.body.account);
     res.send(removeAccount);    
   }
 

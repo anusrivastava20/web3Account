@@ -12,7 +12,7 @@ exports.encrypt_account_privatekey = async function ( req, res ) {
     let encryptedData;
     // await new ETH walletAddress
     console.log(req);
-    encryptedData = await accountController.encryptedPrivateKeyResult(req.body.password);
+    encryptedData = await accountController.encryptedPrivateKeyResult(req.body);
     res.send(encryptedData);    
 }
 
