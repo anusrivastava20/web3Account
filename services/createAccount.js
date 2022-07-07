@@ -2,7 +2,7 @@ var Web3 = require('web3');
 var accountCreateAlgo = require('./accountCreationAlgo.js');
 const { keccak256 } = require('../HashAlgorithms/hash.js');
 //var web3 = new Web3 (Web3.givenProvider || new Web3.providers.WebsocketProvider("ws://localhost:8545"));
-var web3 = new Web3(new Web3.providers.HttpProvider('https://www..io/'));
+var web3 = new Web3(new Web3.providers.HttpProvider('https://rinkeby.infura.io/E6WpJBGNnhJYUFLBattT'));
 // change providerrinkeby
 console.log(web3.currentProvider);
 var newAccounts = null;
@@ -48,7 +48,13 @@ async function getAccounts() {
 	}
 }
 
+var getBalance = async(address, domination) => {
+	var balance = await web3.eth.getBalance("0x5Cf020Fd5A1aC13d5B1d2fba62E65478d78f390E");
+	return balance;
+}
 
+
+module.exports.getBalance = getBalance;
 module.exports.createAccountInfo = createAccountInfo;
 module.exports.encryptedPrivateKeyResult = encryptedPrivateKeyResult;
 module.exports.decryptPrivateKey = decryptPrivateKey;
