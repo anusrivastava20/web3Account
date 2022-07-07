@@ -19,8 +19,10 @@ app.listen(port, function () {
 // Imports routes for the products
 const account = require('./routes/accountCreationRoutes');
 const wallet = require('./routes/walletRoutes');
-
+const contract = require('./routes/contractRoutes');
 app.use('/account', account);
 app.use('/wallet', wallet);
+app.use('/contract', contract);
+
 
 

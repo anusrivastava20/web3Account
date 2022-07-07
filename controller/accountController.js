@@ -27,6 +27,7 @@ exports.decrypt_account_privatekey = async function ( req, res ) {
 exports.get_balance = async function ( req, res ) {
     let balance;
     // await new ETH walletAddress
-    decryptedData = await accountService.getBalance(req.body.address, req.body.domination);
+    console.log(balance);
+    balance = await accountService.getBalance(req.body.address, req.body.domination);
     res.send(balance);    
 }
