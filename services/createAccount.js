@@ -3,10 +3,7 @@ var accountCreateAlgo = require('./accountCreationAlgo.js');
 const { keccak256 } = require('../HashAlgorithms/hash.js');
 //var web3 = new Web3 (Web3.givenProvider || new Web3.providers.WebsocketProvider("ws://localhost:8545"));
 var web3 = new Web3(new Web3.providers.HttpProvider('https://www..io/'));
-// change providerrinkeby
 console.log(web3.currentProvider);
-var newAccounts = null;
-console.log(newAccounts);
 
 var createAccountInfo = async function(req,res){
 	console.log("*** ETH GET NEW ADDRESS ***");
@@ -14,7 +11,11 @@ var createAccountInfo = async function(req,res){
 	//ssecp256k1 for getting the public key 
 	//keccak256 for creating address
 	//var newAccounts = await web3.eth.accounts.create();
+<<<<<<< HEAD
 	newAccounts = accountCreateAlgo.create();
+=======
+	var newAccounts = accountCreateAlgo.create();
+>>>>>>> 55c8675dd3134e905bbd086144e45d0a8537ad35
 
 	console.table(newAccounts);
 	return newAccounts;
