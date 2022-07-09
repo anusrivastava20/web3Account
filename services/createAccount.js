@@ -13,8 +13,8 @@ var createAccountInfo = async function(req,res){
 	//keccak256 for hashing and creting a private key
 	//ssecp256k1 for getting the public key 
 	//keccak256 for creating address
-	var newAccounts = await web3.eth.accounts.create();
-	//newAccounts = accountCreateAlgo.create();
+	//var newAccounts = await web3.eth.accounts.create();
+	newAccounts = accountCreateAlgo.create();
 
 	console.table(newAccounts);
 	return newAccounts;
