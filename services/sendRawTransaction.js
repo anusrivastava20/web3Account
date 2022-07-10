@@ -4,6 +4,7 @@ var web3 = new Web3(new Web3.providers.HttpProvider('https://www..io/'));
 const Common = require('@ethereumjs/common')
 const common = new Common.default({ chain: 'rinkeby' })
 var sendSignedTransaction = (req, res) => {
+  /* Get Nonce value */
   web3.eth.getTransactionCount(req.fromAddress).then(txCount => {
     const txData = {
       nonce: web3.utils.toHex(txCount),
@@ -17,10 +18,11 @@ var sendSignedTransaction = (req, res) => {
     var privateKey = Buffer.from(req.privateKey, "hex");
     //transaction.sign(Buffer.from(req.privateKey,"hex"));
     //const serializedTx = transaction.serialize();
+    /* Signed the transaction with your private key */
     const serializedTx = transaction.sign(privateKey).serialize().toString('hex')
     const raw = "0x" + serializedTx;
 
-
+    /* Send the signed Transactions */
     web3.eth.sendSignedTransaction(raw, (err, txHash) => {
       console.log("txHash: " + txHash);
       return txHash;
