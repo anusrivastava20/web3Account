@@ -1,5 +1,5 @@
 var Web3 = require('web3');
-var web3 = new Web3(new Web3.providers.HttpProvider('https://www..io/'));
+var web3 = new Web3(new Web3.providers.HttpProvider('https://rinkeby.infura.io/v3/4c881e151e0e4242b34c276f326429d3'));
 
 var getContractDetails = async(abi,contractAddress) => {
     console.log(JSON.stringify(abi));
