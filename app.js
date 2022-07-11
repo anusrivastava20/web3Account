@@ -7,7 +7,7 @@ app.use(express.raw());
 
 
 // the port we will be using for access
-let port = 3000;
+let port = 3030;
 if (process.env.SERVER_PORT != undefined) {
     port = process.env.SERVER_PORT
 }

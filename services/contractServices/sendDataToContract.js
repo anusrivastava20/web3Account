@@ -1,6 +1,6 @@
 const Tx = require('@ethereumjs/tx').Transaction
 var Web3 = require('web3');
-var web3 = new Web3(new Web3.providers.HttpProvider('https://rinkeby.infura.io/v3/4c881e151e0e4242b34c276f326429d3'));
+var web3 = new Web3(new Web3.providers.HttpProvider('https://www...io'));
 
 const Common = require('@ethereumjs/common')
 const common = new Common.default({ chain: 'rinkeby' })
@@ -268,7 +268,7 @@ var contractDetails = new web3.eth.Contract(abi,contractAddress,(error,result) =
 const data = contractDetails.methods.transfer(toAddress,1000).encodeABI();
 var sendDataToContract = () => {
   /* Get Nonce value */
-  web3.eth.getTransactionCount(fromAddress).then(txCount => {
+   web3.eth.getTransactionCount(fromAddress).then(txCount => {
     const txData = {
       from: fromAddress,
       nonce: web3.utils.toHex(txCount),
@@ -293,13 +293,14 @@ var sendDataToContract = () => {
       console.log("txHash: " + txHash);
       console.log("err: " + err);
       //0x1239472ec3b8f23cf79e02d0d48845a638efe4f422a335404aff0c69a1218ddf
-      var toAddressBL = contractDetails.methods.balanceOf("0xF4Cb09Ce46234FC80E4343F2025aB4EF63747b9a").call((err,result)=> {return result});
-      console.log(toAddressBL)
-      var fromAddressBL = contractDetails.methods.balanceOf("0x7bA0037FeD605C7d83BD5Ff7b70c1Eb697691026").call((err,result)=> {return result});
-      console.log(fromAddressBL)
-
     });
   });
 }
+var getAccountBalance = async() => {
+    var toAddress = await contractDetails.methods.balanceOf("0xF4Cb09Ce46234FC80E4343F2025aB4EF63747b9a").call((err,result)=> {return result});
+    var fromAddress = await contractDetails.methods.balanceOf("0x7bA0037FeD605C7d83BD5Ff7b70c1Eb697691026").call((err,result)=> {return result});
+    return {toAddress, fromAddress};
+} 
 
 module.exports.sendDataToContract = sendDataToContract;
+module.exports.getAccountBalance = getAccountBalance;
