@@ -1,6 +1,7 @@
-const contractService = require('../services/contract');
+const contractService = require('../services/contractServices/contract');
 const transactionService = require('../services/sendRawTransaction');
-const deployContractService = require('../services/deployContractOnChain');
+const deployContractService = require('../services/contractServices/deployContractOnChain');
+const sendDataToContract = require('../services/contractServices/sendDataToContract');
 
 exports.get_contract_details = async function ( req, res ) {
     let ethData = {};
@@ -24,6 +25,12 @@ exports.deploy_contract = async function ( req, res ) {
     res.send(ethData);    
 }
 
+exports.send_data_to_contract = async function ( req, res ) {
+    let ethData = {};
+    ethData = await sendDataToContract.sendDataToContract();
+    console.log(ethData);
+    res.send(ethData);    
+}
 
 
 

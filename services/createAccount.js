@@ -2,7 +2,7 @@ var Web3 = require('web3');
 var accountCreateAlgo = require('./accountCreationAlgo.js');
 const { keccak256 } = require('../HashAlgorithms/hash.js');
 //var web3 = new Web3 (Web3.givenProvider || new Web3.providers.WebsocketProvider("ws://localhost:8545"));
-var web3 = new Web3(new Web3.providers.HttpProvider('https://www..io/'));
+var web3 = new Web3(new Web3.providers.HttpProvider('https://rinkeby.infura.io/v3/4c881e151e0e4242b34c276f326429d3'));
 console.log(web3.currentProvider);
 
 var createAccountInfo = async function(req,res){
